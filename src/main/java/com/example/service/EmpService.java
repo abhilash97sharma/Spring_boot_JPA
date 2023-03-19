@@ -31,4 +31,8 @@ public class EmpService {
 		return obj.findByratingdesigination(rating, desigination);
 	}
 	
+	public void deletebyId(int id) {
+		obj.deleteById(id);
+	}
+	
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.model.Employees;
 import com.example.service.EmpService;
 
+import ch.qos.logback.classic.Logger;
+
 @RestController
 public class Emp_Controller {
 
@@ -67,6 +69,19 @@ public class Emp_Controller {
 		List<Employees>obj = empser_obj.getByratingdesigination(rating, desigination);
 		System.out.println(obj);
 		return obj;
+	}
+	
+	@PostMapping("deletebyid")
+	@ResponseBody
+	public void deleteObj(@RequestBody() Employees emp) {
+		int id = emp.getId();
+		try {
+		empser_obj.deletebyId(id);
+		System.out.println("emp object with the "+id+" is deleted successfully");
+		}
+		catch (Exception e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 }
